@@ -1,0 +1,69 @@
+.wrap {
+  position: relative;
+  /* respiro para as setas não cortarem o hover-lift dos cards */
+  padding: 4px 0 10px;
+}
+
+/*
+ * NÃO troque para `overflow: visible`: o Swiper depende do overflow hidden
+ * para recortar os slides fora da tela. Sem isso a página inteira estica
+ * horizontalmente. O espaço para o hover-lift dos cards vem do padding
+ * vertical, que fica DENTRO da área recortada.
+ */
+.swiper {
+  padding: 8px 0 12px;
+}
+
+.slide {
+  height: auto;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: var(--shadow-md);
+  font-size: 20px;
+  line-height: 1;
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  opacity: 0;
+  transition: opacity 0.18s ease, background-color 0.15s ease, transform 0.12s ease;
+}
+
+.wrap:hover .arrow,
+.arrow:focus-visible {
+  opacity: 1;
+}
+
+.arrow:hover:not(:disabled) {
+  background: #fff;
+  transform: translateY(-50%) scale(1.08);
+}
+
+.arrow:disabled {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.left {
+  left: -8px;
+}
+.right {
+  right: -8px;
+}
+
+/* Em telas de toque as setas não fazem sentido — o swipe resolve. */
+@media (hover: none) {
+  .arrow {
+    display: none;
+  }
+}

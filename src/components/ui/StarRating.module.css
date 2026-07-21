@@ -1,0 +1,48 @@
+.wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.star {
+  position: relative;
+  display: inline-block;
+  line-height: 1;
+  color: var(--color-star-empty);
+}
+
+.fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  color: var(--color-star);
+  white-space: nowrap;
+}
+
+.interactive {
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.half {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+}
+.halfLeft {
+  left: 0;
+}
+.halfRight {
+  right: 0;
+}
+
+.value {
+  margin-left: 8px;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-text);
+}

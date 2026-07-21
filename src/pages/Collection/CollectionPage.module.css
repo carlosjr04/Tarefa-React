@@ -1,0 +1,28 @@
+.searchBar {
+  position: relative;
+  margin: 8px 0 24px;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 13px 16px 13px 42px;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid var(--color-success);
+  font-size: 15px;
+  outline: none;
+  background: #fff;
+}
+.searchInput:focus {
+  box-shadow: 0 0 0 3px rgba(47, 174, 96, 0.15);
+}
+
+.searchIcon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 17px;
+  height: 17px;
+  object-fit: contain;
+  pointer-events: none;
+}

@@ -1,0 +1,30 @@
+.footer {
+  background: var(--color-footer);
+  color: #fff;
+}
+
+.inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 18px;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  opacity: 0.9;
+  transition: opacity 0.15s ease;
+}
+.icon:hover {
+  opacity: 1;
+}
+
+.icon img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}

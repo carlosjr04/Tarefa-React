@@ -1,0 +1,19 @@
+.reviewsSection {
+  margin-top: 8px;
+}
+
+.reviewsTitle {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--color-primary);
+  margin-bottom: 18px;
+}
+
+.reviewsList {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 760px;
+  margin: 0 auto;
+}

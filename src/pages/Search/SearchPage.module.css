@@ -1,0 +1,92 @@
+.searchBar {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 13px 16px 13px 42px;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid var(--color-success);
+  font-size: 15px;
+  outline: none;
+  background: #fff;
+}
+.searchInput:focus {
+  box-shadow: 0 0 0 3px rgba(47, 174, 96, 0.15);
+}
+
+.searchIcon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 17px;
+  height: 17px;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.filterRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.addFilter {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--color-success);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-pill);
+  padding: 9px 18px;
+  font-size: 13px;
+  font-weight: 600;
+}
+.addFilter:hover {
+  filter: brightness(0.95);
+}
+
+.activeChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--color-success);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-pill);
+  padding: 9px 18px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.modalBack {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: var(--color-text);
+}
+
+.modalTitle {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 8px 0 16px;
+}
+
+.modalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.modalFooter {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+}

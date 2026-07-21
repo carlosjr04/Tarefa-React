@@ -1,0 +1,26 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.confirm {
+  text-align: center;
+  padding: 8px 4px 4px;
+}
+
+.confirmTitle {
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 20px;
+  line-height: 1.35;
+}
+.confirmTitle .danger {
+  color: var(--color-danger);
+}
+
+.confirmActions {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+}

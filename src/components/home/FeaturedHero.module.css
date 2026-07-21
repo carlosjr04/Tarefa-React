@@ -1,0 +1,100 @@
+.wrap {
+  position: relative;
+}
+
+.swiper {
+  border-radius: var(--radius-lg);
+  /* espaço abaixo do banner para os bullets ficarem sobre o fundo da página */
+  padding-bottom: 28px;
+
+  --swiper-pagination-bottom: 0px;
+  --swiper-pagination-bullet-size: 8px;
+  --swiper-pagination-bullet-horizontal-gap: 4px;
+  --swiper-pagination-bullet-inactive-color: #1e3c5a;
+  --swiper-pagination-bullet-inactive-opacity: 0.28;
+  --swiper-pagination-color: var(--color-primary);
+}
+
+.slide {
+  display: block;
+  position: relative;
+  aspect-ratio: 16 / 7;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--color-surface-alt);
+  box-shadow: var(--shadow-md);
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-muted);
+  font-weight: 700;
+  font-size: 22px;
+}
+
+/* garante contraste do texto sobre qualquer poster */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 45%,
+    rgba(0, 0, 0, 0.55) 100%
+  );
+}
+
+.caption {
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  bottom: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: #fff;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 800;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+  line-height: 1.15;
+}
+
+.genres {
+  font-size: 12px;
+  font-weight: 600;
+  opacity: 0.85;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* bullet ativo alongado, como no mockup */
+.swiper :global(.swiper-pagination-bullet) {
+  transition: width 0.2s ease, background-color 0.2s ease;
+}
+
+.swiper :global(.swiper-pagination-bullet-active) {
+  width: 22px;
+  border-radius: 999px;
+}
+
+@media (max-width: 560px) {
+  .title {
+    font-size: 17px;
+  }
+  .caption {
+    left: 14px;
+    right: 14px;
+    bottom: 12px;
+  }
+}
