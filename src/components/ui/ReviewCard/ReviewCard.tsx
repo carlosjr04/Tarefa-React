@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import type { Review } from '@/types/review.types'
-import { Avatar } from './Avatar'
-import { StarRating } from './StarRating'
+import { Avatar } from '../Avatar/Avatar'
+import { StarRating } from '../StarRating/StarRating'
 import styles from './ReviewCard.module.css'
 
 interface ReviewCardProps {

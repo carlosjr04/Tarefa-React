@@ -1,11 +1,11 @@
 import { useFeaturedMovies } from '@/hooks/use-featured-movies'
 import { useGenres } from '@/hooks/use-genres'
 import { useRandomReviews } from '@/hooks/use-random-reviews'
-import { FeaturedHero } from '@/components/home/FeaturedHero'
-import { GenreCarousel } from '@/components/home/GenreCarousel'
-import { ReviewCard } from '@/components/ui/ReviewCard'
-import { Spinner } from '@/components/ui/Spinner'
-import { EmptyState } from '@/components/ui/EmptyState'
+import { FeaturedHero } from '@/components/home/FeatureHero/FeaturedHero'
+import { GenreCarousel } from '@/components/home/GenreCarousel/GenreCarousel'
+import { ReviewCard } from '@/components/ui/ReviewCard/ReviewCard'
+import { Spinner } from '@/components/ui/Spinner/Spinner'
+import { EmptyState } from '@/components/ui/EmptyState/EmptyState'
 import styles from './HomePage.module.css'
 
 export function HomePage() {

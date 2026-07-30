@@ -1,7 +1,7 @@
 import { useState, type ReactNode } from 'react'
-import { Modal } from './Modal'
-import { StarRating } from './StarRating'
-import { Button } from './Button'
+import { Modal } from '../Modal/Modal'
+import { StarRating } from '../StarRating/StarRating'
+import { Button } from '../Button/Button'
 import styles from './ReviewFormModal.module.css'
 
 interface ReviewFormModalProps {

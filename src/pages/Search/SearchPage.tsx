@@ -3,13 +3,13 @@ import { useSearchParams } from 'react-router-dom'
 import { useMovies } from '@/hooks/use-movies'
 import { useGenres } from '@/hooks/use-genres'
 import { useDebounce } from '@/hooks/use-debounce'
-import { MovieCard } from '@/components/ui/MovieCard'
-import { Pagination } from '@/components/ui/Pagination'
-import { Spinner } from '@/components/ui/Spinner'
-import { EmptyState } from '@/components/ui/EmptyState'
-import { Modal } from '@/components/ui/Modal'
-import { FilterChips } from '@/components/ui/FilterChips'
-import { Button } from '@/components/ui/Button'
+import { MovieCard } from '@/components/home/MovieCard/MovieCard'
+import { Pagination } from '@/components/ui/Pagination/Pagination'
+import { Spinner } from '@/components/ui/Spinner/Spinner'
+import { EmptyState } from '@/components/ui/EmptyState/EmptyState'
+import { Modal } from '@/components/ui/Modal/Modal'
+import { FilterChips } from '@/components/ui/FilterChips/FilterChips'
+import { Button } from '@/components/ui/Button/Button'
 import { icons } from '@/assets/icons'
 import styles from './SearchPage.module.css'
 
@@ -23,7 +23,6 @@ export function SearchPage() {
   const [draftGenres, setDraftGenres] = useState<number[]>([])
   const [filterOpen, setFilterOpen] = useState(false)
 
-  // Ajuste de estado durante a render quando a query da URL (header) muda
   const [prevQ, setPrevQ] = useState(initialQ)
   if (initialQ !== prevQ) {
     setPrevQ(initialQ)

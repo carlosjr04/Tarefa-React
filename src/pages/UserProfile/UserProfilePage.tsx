@@ -5,28 +5,14 @@ import {
   useUserWatched,
   useUserReviews,
 } from '@/hooks/use-user-profile'
-import { Avatar } from '@/components/ui/Avatar'
-import { Carousel } from '@/components/ui/Carousel'
-import { MovieCard } from '@/components/ui/MovieCard'
-import { ReviewCard } from '@/components/ui/ReviewCard'
-import { Spinner } from '@/components/ui/Spinner'
-import { EmptyState } from '@/components/ui/EmptyState'
-import type { MovieLite } from '@/types/movie.types'
+import { Avatar } from '@/components/ui/Avatar/Avatar'
+import { ReviewCard } from '@/components/ui/ReviewCard/ReviewCard'
+import { Spinner } from '@/components/ui/Spinner/Spinner'
+import { EmptyState } from '@/components/ui/EmptyState/EmptyState'
 import styles from './UserProfilePage.module.css'
+import MovieRow from '@/components/ui/MovieRow/MovieRow'
 
-function MovieRow({ title, movies }: { title: string; movies: MovieLite[] }) {
-  if (movies.length === 0) return null
-  return (
-    <section>
-      <h2 className="section-title">{title}</h2>
-      <Carousel
-        items={movies}
-        keyFor={(m) => m.id}
-        renderItem={(movie) => <MovieCard movie={movie} showMeta={false} />}
-      />
-    </section>
-  )
-}
+
 
 export function UserProfilePage() {
   const params = useParams<{ id: string }>()
