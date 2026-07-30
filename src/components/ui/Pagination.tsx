@@ -1,4 +1,4 @@
-import type { Metadata } from '@/lib/types/api.types'
+import type { Metadata } from '@/types/api.types'
 import styles from './Pagination.module.css'
 
 interface PaginationProps {

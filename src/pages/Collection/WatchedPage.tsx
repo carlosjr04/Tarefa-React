@@ -5,7 +5,7 @@ import { MovieCard } from '@/components/ui/MovieCard'
 import { Pagination } from '@/components/ui/Pagination'
 import { Spinner } from '@/components/ui/Spinner'
 import { EmptyState } from '@/components/ui/EmptyState'
-import type { MovieLite } from '@/lib/types/movie.types'
+import type { MovieLite } from '@/types/movie.types'
 import { icons } from '@/assets/icons'
 import styles from './CollectionPage.module.css'
 

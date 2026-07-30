@@ -9,7 +9,7 @@ import { ReviewFormModal } from '@/components/ui/ReviewFormModal'
 import { Modal } from '@/components/ui/Modal'
 import { Button } from '@/components/ui/Button'
 import { getErrorMessage } from '@/lib/axios-interceptors'
-import type { Review } from '@/lib/types/review.types'
+import type { Review } from '@/types/review.types'
 import styles from './MyReviewsPage.module.css'
 
 export function MyReviewsPage() {

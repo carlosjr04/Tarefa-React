@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import type { MovieLite } from '@/lib/types/movie.types'
+import type { MovieLite } from '@/types/movie.types'
 import { icons } from '@/assets/icons'
 import styles from './MovieCard.module.css'
 

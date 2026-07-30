@@ -1,6 +1,6 @@
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
-import { movieService } from '@/lib/services/movie.service'
-import type { MovieListParams } from '@/lib/types/movie.types'
+import { movieService } from '@/services/movie.service'
+import type { MovieListParams } from '@/types/movie.types'
 
 export function useMovies(params: MovieListParams) {
   return useQuery({

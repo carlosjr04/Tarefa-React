@@ -7,12 +7,10 @@ import {
 } from 'react'
 import { ENV, tokenStorage } from '@/lib/env'
 import { onUnauthorized } from '@/lib/axios-interceptors'
-
-
-import { AuthContext, type AuthContextValue } from './auth-context'
 import { authService } from '@/services/auth.service'
-import type { AuthUser } from '@/types/user.types'
 import type { LoginPayload, SignupPayload } from '@/types/auth.types'
+import type { AuthUser } from '@/types/user.types'
+import { AuthContext, type AuthContextValue } from '@/providers/auth-context'
 
 function readStoredUser(): AuthUser | null {
   const raw = localStorage.getItem(ENV.USER_STORAGE_KEY)

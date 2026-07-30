@@ -1,4 +1,4 @@
-import type { AuthUser } from '@/lib/types/user.types'
+import type { AuthUser } from '@/types/user.types'
 
 export interface SignupPayload {
   fullName?: string

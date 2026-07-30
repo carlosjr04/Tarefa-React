@@ -1,5 +1,5 @@
-import type { Paginated } from '@/lib/types/api.types'
-import type { Review } from '@/lib/types/review.types'
+import type { Paginated } from '@/types/api.types'
+import type { Review } from '@/types/review.types'
 
 /**
  * A API é inconsistente com `rating`: `POST /reviews` devolve number,

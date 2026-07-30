@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { reviewService } from '@/lib/services/review.service'
+import { reviewService } from '@/services/review.service'
 
 export function useRandomReviews(count = 10) {
   return useQuery({

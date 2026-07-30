@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { movieService } from '@/lib/services/movie.service'
+import { movieService } from '@/services/movie.service'
 import { useAuth } from '@/hooks/use-auth'
 
 export function useMovieDetail(id: number) {

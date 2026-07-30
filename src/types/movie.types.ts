@@ -1,4 +1,4 @@
-import type { Genre } from '@/lib/types/genre.types'
+import type { Genre } from '@/types/genre.types'
 
 /** Forma mínima do filme — é o que vem embutido nas reviews (sem `genres`). */
 export interface MovieSummary {

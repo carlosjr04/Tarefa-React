@@ -1,51 +1,87 @@
-import { httpClient } from '@/lib/adapter'
-import { DEFAULT_PER_PAGE } from '@/lib/config'
-import { normalizePaginatedReviews } from '@/lib/services/review.normalizer'
-import type { Paginated } from '@/lib/types/api.types'
-import type { MovieLite } from '@/lib/types/movie.types'
-import type { Review } from '@/lib/types/review.types'
+import { httpAdapter } from '@/lib/adapter'
+import { apiRoutes, DEFAULT_PER_PAGE } from '@/lib/config'
+import { BaseService } from '@/services/base-service'
+import { normalizePaginatedReviews } from '@/services/review.normalizer'
+import type { Paginated } from '@/types/api.types'
+import type { MovieLite } from '@/types/movie.types'
+import type { Review } from '@/types/review.types'
 
-function listParams(page: number, perPage: number, search?: string) {
-  const params: Record<string, string | number> = { page, perPage }
+function listParams(page: number, perPage: number, search?: string): Record<string, string> {
+  const params: Record<string, string> = { page: String(page), perPage: String(perPage) }
   if (search?.trim()) params.search = search.trim()
   return params
 }
 
-export const accountService = {
-  favorites: (
+class AccountService extends BaseService {
+  public async favorites(
     page = 1,
     perPage = DEFAULT_PER_PAGE,
     search?: string,
-  ): Promise<Paginated<MovieLite>> =>
-    httpClient.getRaw<Paginated<MovieLite>>('/account/favorites', {
+  ): Promise<Paginated<MovieLite>> {
+    const res = await this.execute<void, Paginated<MovieLite>>({
+      method: 'GET',
+      url: apiRoutes.ACCOUNT_FAVORITES,
       params: listParams(page, perPage, search),
-    }),
+    })
+    return res.data
+  }
 
   /** Idempotente. O movieId vai no body; a remoção usa o id na URL. */
-  addFavorite: (movieId: number): Promise<void> =>
-    httpClient.post<{ message: string }>('/account/favorites', { movieId }).then(() => undefined),
+  public async addFavorite(movieId: number): Promise<void> {
+    await this.execute<{ movieId: number }, unknown>({
+      method: 'POST',
+      url: apiRoutes.ACCOUNT_FAVORITES,
+      data: { movieId },
+    })
+  }
 
-  removeFavorite: (movieId: number): Promise<void> =>
-    httpClient.del(`/account/favorites/${movieId}`),
+  public async removeFavorite(movieId: number): Promise<void> {
+    await this.execute<void, unknown>({
+      method: 'DELETE',
+      url: apiRoutes.accountFavorite(movieId),
+    })
+  }
 
-  watched: (
+  public async watched(
     page = 1,
     perPage = DEFAULT_PER_PAGE,
     search?: string,
-  ): Promise<Paginated<MovieLite>> =>
-    httpClient.getRaw<Paginated<MovieLite>>('/account/watched', {
+  ): Promise<Paginated<MovieLite>> {
+    const res = await this.execute<void, Paginated<MovieLite>>({
+      method: 'GET',
+      url: apiRoutes.ACCOUNT_WATCHED,
       params: listParams(page, perPage, search),
-    }),
+    })
+    return res.data
+  }
 
   /** Idempotente. Mesma convenção dos favoritos. */
-  addWatched: (movieId: number): Promise<void> =>
-    httpClient.post<{ message: string }>('/account/watched', { movieId }).then(() => undefined),
+  public async addWatched(movieId: number): Promise<void> {
+    await this.execute<{ movieId: number }, unknown>({
+      method: 'POST',
+      url: apiRoutes.ACCOUNT_WATCHED,
+      data: { movieId },
+    })
+  }
 
-  removeWatched: (movieId: number): Promise<void> =>
-    httpClient.del(`/account/watched/${movieId}`),
+  public async removeWatched(movieId: number): Promise<void> {
+    await this.execute<void, unknown>({
+      method: 'DELETE',
+      url: apiRoutes.accountWatched(movieId),
+    })
+  }
 
-  myReviews: (page = 1, perPage = DEFAULT_PER_PAGE): Promise<Paginated<Review>> =>
-    httpClient
-      .getRaw<Paginated<Review>>('/account/reviews', { params: { page, perPage } })
-      .then(normalizePaginatedReviews),
+  public async myReviews(
+    page = 1,
+    perPage = DEFAULT_PER_PAGE,
+  ): Promise<Paginated<Review>> {
+    const res = await this.execute<void, Paginated<Review>>({
+      method: 'GET',
+      url: apiRoutes.ACCOUNT_REVIEWS,
+      params: { page: String(page), perPage: String(perPage) },
+    })
+    return normalizePaginatedReviews(res.data)
+  }
 }
+
+export const accountService = new AccountService(httpAdapter)

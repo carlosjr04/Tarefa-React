@@ -1,5 +1,5 @@
-import type { MovieSummary } from '@/lib/types/movie.types'
-import type { PublicUser } from '@/lib/types/user.types'
+import type { MovieSummary } from '@/types/movie.types'
+import type { PublicUser } from '@/types/user.types'
 
 export type Rating = 0.5 | 1 | 1.5 | 2 | 2.5 | 3 | 3.5 | 4 | 4.5 | 5
 

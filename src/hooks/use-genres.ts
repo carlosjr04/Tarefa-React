@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { genreService } from '@/lib/services/genre.service'
+import { genreService } from '@/services/genre.service'
 
 export function useGenres() {
   return useQuery({

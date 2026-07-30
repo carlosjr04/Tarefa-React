@@ -1,4 +1,4 @@
-import { AppProviders } from '@/lib/providers/AppProviders'
+import { AppProviders } from '@/providers/AppProviders'
 import { AppRoutes } from '@/routes/AppRoutes'
 
 function App() {

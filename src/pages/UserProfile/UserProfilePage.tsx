@@ -11,7 +11,7 @@ import { MovieCard } from '@/components/ui/MovieCard'
 import { ReviewCard } from '@/components/ui/ReviewCard'
 import { Spinner } from '@/components/ui/Spinner'
 import { EmptyState } from '@/components/ui/EmptyState'
-import type { MovieLite } from '@/lib/types/movie.types'
+import type { MovieLite } from '@/types/movie.types'
 import styles from './UserProfilePage.module.css'
 
 function MovieRow({ title, movies }: { title: string; movies: MovieLite[] }) {

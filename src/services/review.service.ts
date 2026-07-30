@@ -1,33 +1,61 @@
-import { httpClient } from '@/lib/adapter'
-import { DEFAULT_PER_PAGE } from '@/lib/config'
+import { httpAdapter } from '@/lib/adapter'
+import { apiRoutes, DEFAULT_PER_PAGE } from '@/lib/config'
+import { BaseService } from '@/services/base-service'
 import {
   normalizePaginatedReviews,
   normalizeReview,
   normalizeReviews,
-} from '@/lib/services/review.normalizer'
-import type { Paginated } from '@/lib/types/api.types'
-import type { Review, UpdateReviewPayload, UpsertReviewPayload } from '@/lib/types/review.types'
+} from '@/services/review.normalizer'
+import type { ApiResponse, Paginated } from '@/types/api.types'
+import type { Review, UpdateReviewPayload, UpsertReviewPayload } from '@/types/review.types'
 
-export const reviewService = {
-  listByMovie: (
+class ReviewService extends BaseService {
+  public async listByMovie(
     movieId: number,
     page = 1,
     perPage = DEFAULT_PER_PAGE,
-  ): Promise<Paginated<Review>> =>
-    httpClient
-      .getRaw<Paginated<Review>>('/reviews', { params: { movieId, page, perPage } })
-      .then(normalizePaginatedReviews),
+  ): Promise<Paginated<Review>> {
+    const res = await this.execute<void, Paginated<Review>>({
+      method: 'GET',
+      url: apiRoutes.REVIEWS,
+      params: { movieId: String(movieId), page: String(page), perPage: String(perPage) },
+    })
+    return normalizePaginatedReviews(res.data)
+  }
 
-  random: (count = 10): Promise<Review[]> =>
-    httpClient
-      .get<Review[]>('/reviews/random', { params: { count } })
-      .then(normalizeReviews),
+  public async random(count = 10): Promise<Review[]> {
+    const res = await this.execute<void, ApiResponse<Review[]>>({
+      method: 'GET',
+      url: apiRoutes.REVIEWS_RANDOM,
+      params: { count: String(count) },
+    })
+    return normalizeReviews(res.data.data)
+  }
 
-  upsert: (payload: UpsertReviewPayload): Promise<Review> =>
-    httpClient.post<Review>('/reviews', payload).then(normalizeReview),
+  public async upsert(payload: UpsertReviewPayload): Promise<Review> {
+    const res = await this.execute<UpsertReviewPayload, ApiResponse<Review>>({
+      method: 'POST',
+      url: apiRoutes.REVIEWS,
+      data: payload,
+    })
+    return normalizeReview(res.data.data)
+  }
 
-  update: (id: number, payload: UpdateReviewPayload): Promise<Review> =>
-    httpClient.put<Review>(`/reviews/${id}`, payload).then(normalizeReview),
+  public async update(id: number, payload: UpdateReviewPayload): Promise<Review> {
+    const res = await this.execute<UpdateReviewPayload, ApiResponse<Review>>({
+      method: 'PUT',
+      url: apiRoutes.review(id),
+      data: payload,
+    })
+    return normalizeReview(res.data.data)
+  }
 
-  remove: (id: number): Promise<void> => httpClient.del(`/reviews/${id}`),
+  public async remove(id: number): Promise<void> {
+    await this.execute<void, unknown>({
+      method: 'DELETE',
+      url: apiRoutes.review(id),
+    })
+  }
 }
+
+export const reviewService = new ReviewService(httpAdapter)

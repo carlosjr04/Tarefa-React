@@ -4,6 +4,9 @@ export const ENV = {
   USER_STORAGE_KEY: import.meta.env.VITE_USER_STORAGE_KEY ?? 'filminhos.user',
 } as const
 
+/** 'development' | 'production' — vindo do Vite. */
+export const nodeEnv = import.meta.env.MODE
+
 if (!ENV.API_BASE_URL) {
   throw new Error('VITE_API_BASE_URL não definida. Copie o .env.example para .env')
 }
