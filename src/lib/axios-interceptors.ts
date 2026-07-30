@@ -1,5 +1,20 @@
 import { AxiosError, type AxiosInstance } from 'axios'
-import type { ApiErrorBody, NormalizedError } from '@/types/api.types'
+import { tokenStorage } from '@/lib/env'
+import type { ApiErrorBody, NormalizedError } from '@/lib/types/api.types'
+
+// --- Auth ---------------------------------------------------------------
+
+export function attachAuthInterceptor(instance: AxiosInstance): void {
+  instance.interceptors.request.use((config) => {
+    const token = tokenStorage.get()
+    if (token) {
+      config.headers.set('Authorization', `Bearer ${token}`)
+    }
+    return config
+  })
+}
+
+// --- 401 handler --------------------------------------------------------
 
 type UnauthorizedHandler = () => void
 
@@ -15,6 +30,8 @@ export function onUnauthorized(handler: UnauthorizedHandler): () => void {
     if (unauthorizedHandler === handler) unauthorizedHandler = null
   }
 }
+
+// --- Error --------------------------------------------------------------
 
 export function isNormalizedError(value: unknown): value is NormalizedError {
   return (

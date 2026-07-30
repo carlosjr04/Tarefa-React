@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { useAuth } from '@/hooks/useAuth'
+import { useAuth } from '@/hooks/use-auth'
 import { Avatar } from '@/components/ui/Avatar'
 import { icons } from '@/assets/icons'
 import styles from './Header.module.css'

@@ -8,10 +8,6 @@ if (!ENV.API_BASE_URL) {
   throw new Error('VITE_API_BASE_URL não definida. Copie o .env.example para .env')
 }
 
-export const DEFAULT_PER_PAGE = 12
-
-export const RATING_VALUES = [0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5] as const
-
 export const tokenStorage = {
   get(): string | null {
     return localStorage.getItem(ENV.TOKEN_STORAGE_KEY)

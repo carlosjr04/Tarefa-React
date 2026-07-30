@@ -1,16 +1,6 @@
-import axios, { type AxiosRequestConfig } from 'axios'
-import { ENV } from '@/config/env'
-import { attachAuthInterceptor } from '@/interceptors/auth.interceptor'
-import { attachErrorInterceptor } from '@/interceptors/error.interceptor'
-import type { ApiResponse } from '@/types/api.types'
-
-export const http = axios.create({
-  baseURL: ENV.API_BASE_URL,
-  headers: { 'Content-Type': 'application/json' },
-})
-
-attachAuthInterceptor(http)
-attachErrorInterceptor(http)
+import type { AxiosRequestConfig } from 'axios'
+import { http } from '@/lib/axios'
+import type { ApiResponse } from '@/lib/types/api.types'
 
 export const httpClient = {
   /** GET desembrulhando `{ data }`. */

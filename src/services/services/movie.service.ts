@@ -1,7 +1,10 @@
 import { httpClient } from "@/lib/adapter";
-import type { Paginated } from "@/types/api.types";
-import type { MovieDetail, MovieListParams, MovieLite } from "@/types/movie.types";
-
+import type { Paginated } from "@/lib/types/api.types";
+import type {
+  MovieDetail,
+  MovieLite,
+  MovieListParams,
+} from "@/lib/types/movie.types";
 
 /** A API espera `genreIds[]=1&genreIds[]=2`, que não é o formato padrão do axios. */
 function buildListQuery(params: MovieListParams): string {

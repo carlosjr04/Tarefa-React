@@ -1,8 +1,8 @@
-import { useMoviesByGenre } from '@/hooks/useMovies'
+import { useMoviesByGenre } from '@/hooks/use-movies'
 import { Carousel } from '@/components/ui/Carousel'
 import { MovieCard } from '@/components/ui/MovieCard'
 import { Spinner } from '@/components/ui/Spinner'
-import type { Genre } from '@/types/genre.types'
+import type { Genre } from '@/lib/types/genre.types'
 
 interface GenreCarouselProps {
   genre: Genre

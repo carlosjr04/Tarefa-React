@@ -4,7 +4,7 @@ import {
   useQuery,
   useQueryClient,
 } from '@tanstack/react-query'
-import { accountService } from '@/services/account.service'
+import { accountService } from '@/lib/services/account.service'
 
 export function useWatched(page = 1, search = '') {
   return useQuery({

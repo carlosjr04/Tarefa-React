@@ -4,7 +4,7 @@ import { A11y, Autoplay, EffectFade, Keyboard, Pagination } from 'swiper/modules
 import 'swiper/css'
 import 'swiper/css/effect-fade'
 import 'swiper/css/pagination'
-import type { MovieLite } from '@/types/movie.types'
+import type { MovieLite } from '@/lib/types/movie.types'
 import styles from './FeaturedHero.module.css'
 
 interface FeaturedHeroProps {

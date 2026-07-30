@@ -1,4 +1,4 @@
-import type { Genre } from '@/types/genre.types'
+import type { Genre } from '@/lib/types/genre.types'
 import styles from './FilterChips.module.css'
 
 interface FilterChipsProps {

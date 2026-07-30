@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { movieService } from '@/services/movie.service'
+import { movieService } from '@/lib/services/movie.service'
 
 export function useFeaturedMovies(count = 10) {
   return useQuery({

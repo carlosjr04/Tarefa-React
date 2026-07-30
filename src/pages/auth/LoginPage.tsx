@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { useAuth } from '@/hooks/useAuth'
+import { useAuth } from '@/hooks/use-auth'
 import { Input } from '@/components/ui/Input'
 import { Button } from '@/components/ui/Button'
-import { getErrorMessage, getFieldErrors } from '@/interceptors/error.interceptor'
+import { getErrorMessage, getFieldErrors } from '@/lib/axios-interceptors'
 import styles from './Auth.module.css'
 
 export function LoginPage() {
